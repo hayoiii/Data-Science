@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import os
 
-name_list_women_singer = open('/Users/iseungjin/women_singer.txt', 'w')
+name_list_women_singer = open('/Users/iseungjin/namelist_women_singer.txt', 'w')
 url = ["https://ko.wikipedia.org/w/index.php?title=%EB%B6%84%EB%A5%98:%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%97%AC%EC%9E%90_%EA%B0%80%EC%88%98&pageuntil=%EB%82%98%ED%9D%AC%EA%B2%BD#mw-pages",
        "https://ko.wikipedia.org/w/index.php?title=%EB%B6%84%EB%A5%98:%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%97%AC%EC%9E%90_%EA%B0%80%EC%88%98&pagefrom=%EB%82%98%ED%9D%AC%EA%B2%BD#mw-pages",
        "https://ko.wikipedia.org/w/index.php?title=%EB%B6%84%EB%A5%98:%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%97%AC%EC%9E%90_%EA%B0%80%EC%88%98&pagefrom=%EB%B3%B4%EC%95%84#mw-pages",
