@@ -115,7 +115,7 @@ try:
         # print(csvtext)
         # data = pd.DataFrame(csvtext)
         # data.to_csv('insta.txt', encoding='utf-8')
-    df.to_csv('DSlocal/output.csv', index=False, mode='w', encoding='utf-8-sig')
+    df.to_csv('insta_언더아머2.csv', index=False, mode='w', encoding='utf-8-sig')
     print("저장성공")
 except:
     print("오류발생"+str(i+1)+"개의 데이터를 저장합니다.")
