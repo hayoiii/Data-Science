@@ -1,5 +1,5 @@
 # -*-coding:utf-8-*-
-
+# ### 이거 대신 name-counter.ipynb 쓸 것
 name_file = open('./namelist.txt', 'r')     # 연예인 이름 리스트의 텍스트 파일 (구분자는 '\n'으로 가정)
 article_file = open('./data.txt', 'r')      # 크롤링한 기사 제목들의 텍스트 파일 (구분자는 '\n'으로 가정)
 output_file = open('./output.txt', 'w')     # 언급 횟수의 내림차순으로 결과값을 쓸 텍스트파일 (비어있어야 함 구분자는 ','와 '\n')
