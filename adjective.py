@@ -21,7 +21,7 @@ for sentence in news:
     morph = twitter.pos(sentence)
     sentences_tag.append(morph)
     print(morph)
-    print('-'*30,'다음기사제목')
+    print('-'*30,'다음기사제목입니당')
 
 print(sentences_tag)
 print(len(sentences_tag))
