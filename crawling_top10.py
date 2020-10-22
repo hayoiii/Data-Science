@@ -2,9 +2,10 @@
 
 import requests
 from bs4 import BeautifulSoup
+import os
 
 # BASE_PATH 폴더에 크롤링한 결과를 저장 할 텍스트파일이 생성될 것임 (후보의 수만큼) 
-BASE_PATH = '/'
+BASE_PATH = './'
 # name_file: 후보 이름이 '\n'으로 구분되어있는 텍스트 파일
 name_file = open('top10.txt', 'r')
 
@@ -15,8 +16,9 @@ def crawl(keyword, maxpage):
     maxpage_t = (int(maxpage) - 1) * 10 + 1  # 11= 2페이지 21=3페이지 31=4페이지 ...81=9페이지 , 91=10페이지, 101=11페이지
 
     # f: output file
-    # ex) 유이.txt, 소유.txt, ... 
-    f = open(BASE_PATH + star + '.txt', 'w', encoding='utf-8')
+    # ex) 유이.txt, 소유.txt, ...
+    os.system('nano '+keyword+'.txt')
+    f = open(BASE_PATH + keyword + '.txt', 'w', encoding='utf-8')
     while page <= maxpage_t:
         url = "https://search.naver.com/search.naver?where=news&sm=tab_jum&query=" + keyword + "&ds=&de=&docid=&nso=&mynews=1" + "&start=" + str(
             page)
@@ -50,7 +52,7 @@ while True:
 
 # 각각의 연예인에 대해서 크롤링 
 for star in namelist:
-    maxpage = 5       # 네이버 검색의 최대 페이지 수
+    maxpage = 100       # 네이버 검색의 최대 페이지 수
     result = crawl(star, maxpage)
     print(star + '>>', result, 'completed')
 
