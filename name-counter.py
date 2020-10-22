@@ -1,8 +1,8 @@
 # -*-coding:utf-8-*-
 
-name_file = open('./namelist.txt', 'r')     # 연예인 이름 리스트의 텍스트 파일 (구분자는 '\n'으로 가정)
-article_file = open('./data.txt', 'r')      # 크롤링한 기사 제목들의 텍스트 파일 (구분자는 '\n'으로 가정)
-output_file = open('./output.txt', 'w')     # 언급 횟수의 내림차순으로 결과값을 쓸 텍스트파일 (비어있어야 함 구분자는 ','와 '\n')
+name_file = open('/Users/iseungjin/PycharmProjects/DataScience/namelist_women_singer.txt', 'r')     # 연예인 이름 리스트의 텍스트 파일 (구분자는 '\n'으로 가정)
+article_file = open('/Users/iseungjin/news_list.txt', 'r')      # 크롤링한 기사 제목들의 텍스트 파일 (구분자는 '\n'으로 가정)
+output_file = open('/Users/iseungjin/output.txt', 'w')     # 언급 횟수의 내림차순으로 결과값을 쓸 텍스트파일 (비어있어야 함 구분자는 ','와 '\n')
 
 # name_count_dict: {연예인 이름 : 언급 횟수}
 name_count_dict = {}
@@ -10,14 +10,16 @@ name_count_dict = {}
 namelist = []
 
 # namelist 만들기
-while True:
-    name = name_file.readline()
-    if name == '':
-        break
-    name = name[:-1]        # '\n' 제거
-    namelist.append(name)
-
-name_file.close()
+# while True:
+#     name = name_file.readline()
+#     if name == '':
+#         break
+#     name = name[:-1]        # '\n' 제거
+#     namelist.append(name)
+#
+namelist = name_file.read()
+namelist = namelist.replace("'", "")
+namelist = namelist.split(',')
 
 
 while True:
@@ -37,7 +39,7 @@ while True:
             else:
                 name_count_dict[name] += 1
             # 제목에 포함된 연예인 찾았으면 다음 기사로 넘어가기
-            break
+            break # 이 break는 없어도 결과는 똑같당!
 
 # dict의 value값 (언급 횟수)를 기준으로 내림차순 정렬
 name_count_dict = sorted(name_count_dict.items(), reverse=True, key=lambda item: item[1])
@@ -49,6 +51,5 @@ for key, value in name_count_dict:
     output_file.write(key + ',' + str(value)+'\n')
     print(key + " \t", value)
 
-output_file.readlines()
 article_file.close()
 output_file.close()
