@@ -79,7 +79,7 @@ try:
         # reallink1: 게시물 작성자의 id
         reallink1 = reallink1[:20]
         if reallink1 == '':
-            reallink1 = 'Null'
+            reallink1 = 'Null'+str(i)
         # csvtext[i].append('    ')
 
         # hashtags 리스트에 해쉬태그 저장
@@ -115,11 +115,11 @@ try:
         # print(csvtext)
         # data = pd.DataFrame(csvtext)
         # data.to_csv('insta.txt', encoding='utf-8')
-    df.to_csv('insta_언더아머2.csv', index=False, mode='w', encoding='utf-8-sig')
+    df.to_csv('insta_언더아머4.csv', index=False, mode='w', encoding='utf-8-sig')
     print("저장성공")
 except:
     print("오류발생"+str(i+1)+"개의 데이터를 저장합니다.")
-    df.to_csv('insta_언더아머.csv', index=False, mode='w', encoding='utf-8-sig')
+    df.to_csv('insta_언더아머4.csv', index=False, mode='w', encoding='utf-8-sig')
 
 
 print(df)
