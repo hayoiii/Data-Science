@@ -17,10 +17,13 @@ output_file = open('./data/'+ star_name + '의 평판분석.txt', 'w', encoding=
 # score = pos(positive), neg(negative), neu(neutral), compound(혼합점수(?))
 def text_to_binary(text):
     score = analyser.polarity_scores(text)
+    # 부정점수가 0이상, 혼합점수가 음수면 부정적이라고 판단하기로 직접 설정
     if score['neg']>0 and score['compound']<0:
         sentiment = '부정적'
+    # 긍정점수가 0이상, 혼합점수가 양수면 긍정적이라고 판단
     elif score['pos']>0 and score['compound']>0:
         sentiment = '긍정적'
+    # 나머지에 대해서는 중립적
     else:
         sentiment = '중립적'
 
@@ -31,9 +34,24 @@ print(star_name,'평판분석')
 output_file.write(star_name)
 output_file.write('\n')
 
+pos = 0
+neg = 0
+
 for i, f in enumerate(lines):
     f = f.replace('\n', '')
     sentiment_test = text_to_binary(f)
     print('%s번째 형용사 %s는 %s입니다.\n'%(i,f,sentiment_test))
     output = '%s번째 형용사 %s는 %s입니다.\n'%(i,f,sentiment_test)
+    # 중립은 그냥 빼는걸로함
+    if sentiment_test == '긍정적':
+        pos += 1
+    elif sentiment_test == '부정적':
+        neg += 1
     output_file.write(output)
+
+pos_rate = float(pos / len(lines))
+neg_rate = float(neg / len(lines))
+
+percentage = '긍정적 비율-%f, 부정적비율-%f\n'%(pos_rate, neg_rate)
+print(percentage)
+output_file.write(percentage)
