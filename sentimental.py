@@ -11,7 +11,7 @@ lines = input_file.readlines()
 input_file.close()
 
 star_name = "유이"
-output_file = open('./'+ star_name + '.txt', 'w', encoding='utf-8')
+output_file = open('./data/'+ star_name + '의 평판분석.txt', 'w', encoding='utf-8')
 
 # 해당 텍스트를 긍정/부정을 0.0~1.0사이의 값으로 알려줌
 # score = pos(positive), neg(negative), neu(neutral), compound(혼합점수(?))
