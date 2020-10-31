@@ -3,6 +3,7 @@ import sys
 import urllib.request
 import json
 
+# 하루 오백개엿나 제한있음.
 client_id = "1gqRqGiKGu9mMxJtPJTt" # 개발자센터에서 발급받은 Client ID 값
 client_secret = "2Qpbm0AYfT" # 개발자센터에서 발급받은 Client Secret 값
 
@@ -31,6 +32,7 @@ for i in range(len(kor_array)):
         data = json.loads(data)
         trans_text = data["message"]["result"]["translatedText"]
         output.write(trans_text)
+        # sentimental분석할때 입력이 한줄씩 들어가는걸로 짜놔서 
         output.write('\n')
         eng_array.append(trans_text)
     else:
@@ -40,8 +42,3 @@ for i in range(len(kor_array)):
 
 print(kor_array)
 print(eng_array)
-
-
-
-
-
