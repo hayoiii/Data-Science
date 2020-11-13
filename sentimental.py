@@ -32,17 +32,19 @@ pos = 0
 neg = 0
 
 for i in eng_adj_list:
+    star_name = i[:i.rfind('.txt')]
+
     input_file = open("./data/eng_adj/{}".format(i),'r',encoding='utf-8')
+    result_file = open('./data/sentimental_percentage/{}의 평판분석.txt'.format(star_name), 'w', encoding='utf-8')
+
     lines = input_file.readlines()
     input_file.close()
-
-    star_name = i[:i.rfind('.txt')]
 
     for j, f in enumerate(lines):
         f = f.replace('\n', '')
         sentiment_test = text_to_binary(f)
-        print('%s번째 형용사 %s는 %s입니다.\n' % (j, f, sentiment_test))
         output = '%s번째 형용사 %s는 %s입니다.\n' % (j, f, sentiment_test)
+        result_file.write(output)
         # 중립은 그냥 빼는걸로함
         if sentiment_test == '긍정적':
             pos += 1
@@ -54,7 +56,10 @@ for i in eng_adj_list:
 
     percentage = '긍정적 비율: %f, 부정적비율: %f\n' % (pos_rate, neg_rate)
     result = '{}의 평판분석:{}'.format(star_name, percentage)
+    result_file.write(result)
     print(result)
 
+    pos = 0
+    neg = 0
 
 

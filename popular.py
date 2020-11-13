@@ -4,9 +4,7 @@ from konlpy.tag import Okt
 import numpy as np
 
 path = '/Users/iseungjin/PycharmProjects/DataScience/adj.txt'
-star_list_path = './data/stars/'
-output = './data/stars/star_adj/'
-
+star_list_path = './data/rest_stars/'
 
 # 인덱스 작업에 포함되었던 최종 형용사 배열추출
 def get_adj_list():
